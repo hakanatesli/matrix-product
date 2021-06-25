@@ -1,6 +1,3 @@
-import math
-
-
 class Multiplication:
 
     def __init__(self,matrix1,matrix2):
@@ -21,16 +18,15 @@ class Multiplication:
         else:
             return True
     
-    def make_result(self,col,row):
+    def fill_result(self,col,row):
         """
         INPUT: col: int
                row: int
-        OUTPUT: result: list
+        OUTPUT: No Output
 
         DESC: Creates a col x row dimensional zero matrix.
         """
-        self.result=[[0 for i in range(col)] for j in range(row)] 
-        return self.result
+        self.result=[[0 for i in range(col)] for j in range(row)]
 
     def display_result(self):
         """
@@ -38,3 +34,4 @@ class Multiplication:
         """
         for r in self.result:
             print(r)
+
