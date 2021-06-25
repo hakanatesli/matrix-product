@@ -5,7 +5,7 @@ class Hadamard(Multiplication):
     Wiki: https://en.wikipedia.org/wiki/Hadamard_product_(matrices)
     """
     def __init__(self,matrix1,matrix2):
-        super().__init__(self,matrix1,matrix2)
+        Multiplication.__init__(self,matrix1,matrix2)
     
     def ismultiplyable(self):
         """
@@ -19,7 +19,7 @@ class Hadamard(Multiplication):
         p = len(self.matrix2)
         r = len(self.matrix2[0])
 
-        if super().ismultiplyable():
+        if Multiplication.ismultiplyable(self):
             if m == p and n == r:
                 return True
         else:
@@ -34,10 +34,8 @@ class Hadamard(Multiplication):
         if self.ismultiplyable():
             m = len(self.matrix1)
             n = len(self.matrix1[0])
-            p = len(self.matrix2)
-            r = len(self.matrix2[0])
 
-            super().fill_result(m, n)
+            Multiplication.fill_result(self,n, m)
 
             for i in range(0, m): 
          
