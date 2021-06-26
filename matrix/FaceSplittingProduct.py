@@ -1,8 +1,8 @@
 from .Multiplication import Multiplication
 
-class Hadamard(Multiplication):
+class FaceSplitting(Multiplication):
     """
-    Wiki: https://en.wikipedia.org/wiki/Hadamard_product_(matrices)
+    Wiki: https://en.wikipedia.org/wiki/Khatri%E2%80%93Rao_product
     """
     def __init__(self,matrix1,matrix2):
         Multiplication.__init__(self,matrix1,matrix2)
@@ -12,15 +12,13 @@ class Hadamard(Multiplication):
         INPUT: No Input
         OUTPUT: ismultiplyable : bool
 
-        DESC: Matrices must be the same size.
+        DESC: Matrices row must be the same size.
         """
         m = len(self.matrix1)
-        n = len(self.matrix1[0])
         p = len(self.matrix2)
-        r = len(self.matrix2[0])
 
         if Multiplication.ismultiplyable(self):
-            if m == p and n == r:
+            if m == p:
                 return True
         else:
             return False
@@ -28,18 +26,24 @@ class Hadamard(Multiplication):
     
     def multiply(self):
         """
-        DESC: For matrices of different dimensions (m × n and p × q, where m ≠ p or n ≠ q), 
-              the Hadamard product is undefined.
+        DESC: This type of operation is based on row-by-row Kronecker products of two matrices.
         """
         if self.ismultiplyable():
             m = len(self.matrix1)
             n = len(self.matrix1[0])
+            r = len(self.matrix2[0])
 
-            Multiplication.fill_result(self,n, m)
+            Multiplication.fill_result(self,(n * r), m)
 
-            for i in range(0, m): 
-         
-                for k in range(0, n):
-                    self.result[i][k] = self.matrix1[i][k] * self.matrix2[i][k]
+            colr = 0
+
+            for i in range(n):
+
+                for k in range(r):
+
+                    for j in range(m):
+
+                            self.result[j][colr] = self.matrix1[j][i] * self.matrix2[j][k]
+                    colr += 1
         else:
             print("Matrices are not multiplyable!")
