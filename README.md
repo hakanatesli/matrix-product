@@ -12,7 +12,7 @@ This package needed for Matrix Multiplication with Python.
  
 ## Installation
  
- `pip install matrixproduct`
+ `pip install matrix-product`
 
 ## Example
 
