@@ -17,7 +17,7 @@ This package needed for Matrix Multiplication with Python.
 ## Example
 
 ```
-    from matrix import Kronecker
+    from matrix_product import Kronecker
     
     matrix1 = [[1,2],[3,4],[1,0]]
     matrix2 = [[0,5,2],[6,7,3]]
